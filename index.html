@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>Simple progress bar on scroll - Javascript</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap" rel="stylesheet">
+  </head>
+  <body>
+     
+<div id="bar"></div>
+<div class="content">
+  <h1>Simple progress bar on scroll - Javascript</h1>
+  <h2>Start scrolling!</h2>
+  <p>This is a pretty simple progress bar on scroll. It gives information to your users about how much they has scrolled (down or up) on your content.</p>
+  <p>You can start using it by adding this element to your document:
+  <pre>
+  <xmp>
+    <div id="bar"></div>
+  </xmp>
+  </pre>
+  </p>Then add this base code on your script.js file or your document file:</p>
+  <pre>
+let options = {
+  height: '5px',
+  color: '#FF8227'
+};
+
+function progressBar(id, optional = options ) {
+  bar.style.height = options['height'];
+  bar.style.background = options['color'];
+  bar.style.position = 'fixed';
+  bar.style.top = 0;
+  
+  window.onscroll = function() {
+    var h = document.documentElement,
+        b = document.body,
+        st = 'scrollTop',
+        sh = 'scrollHeight';
+	  var percent = (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
+	  bar.style.width = percent + '%';
+  }
+}
+
+progressBar('bar');
+  </pre>
+  <p>You can change the ID if you want by passing the ID as a parameter.</p>
+  <p>As you can see, I included some optional features as height and color. Change this values in order to get the desired appeareance on your progress bar.</p>
+    
+  </div>
+
+  </body>
+</html>
